@@ -1,6 +1,7 @@
 let express = require('express'); 
 let hbs = require('hbs'); 
-let fs = require('fs');
+let fs = require('fs'); 
+const port = process.env.PORT || 3000;
 let app = express(); 
 app.set('view engine', 'hbs');
 
@@ -27,9 +28,9 @@ app.use((req, res, next) => {
   next();
 });
  
-app.use((req, res, next) => { 
-  res.render('maintain.hbs');
-}); 
+//app.use((req, res, next) => { 
+//  res.render('maintain.hbs');
+//}); 
 
 app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => { 
@@ -55,6 +56,6 @@ app.get('/bad', (req, res) => {
 
 
 
-app.listen(3000, () => {
-    console.log('Server is up to port 3000');
+app.listen(port, () => {
+    console.log(`Server is up to port ${port}`);
 });
